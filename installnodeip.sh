@@ -91,14 +91,14 @@ apt-get install -y curl >> $LOG_FILE 2>&1
 
 # --- NODE BINARY SETUP --- #
 
-NODE=https://github.com/kadena-io/chainweb-node/releases/download/2.1.1/chainweb-2.1.1.ghc-8.8.4.ubuntu-18.04.d99165c.tar.gz
+NODE=https://github.com/kadena-io/chainweb-node/releases/download/2.4/chainweb-2.4.ghc-8.8.4.ubuntu-20.04.15111ad.tar.gz
 MINER=https://github.com/kadena-io/chainweb-miner/releases/download/v1.0.3/chainweb-miner-1.0.3-ubuntu-18.04.tar.gz
 
 decho 'Downloading Node...'
 mkdir -p /root/kda
 cd /root/kda/
 wget --no-check-certificate $NODE >> $LOG_FILE 2>&1
-tar -xvf chainweb-2.1.1.ghc-8.8.4.ubuntu-18.04.d99165c.tar.gz >> $LOG_FILE 2>&1
+tar -xvf chainweb-2.4.ghc-8.8.4.ubuntu-20.04.15111ad.tar.gz >> $LOG_FILE 2>&1
 wget --no-check-certificate $MINER >> $LOG_FILE 2>&1
 tar -xvf chainweb-miner-1.0.3-ubuntu-18.04.tar.gz >> $LOG_FILE 2>&1
 
@@ -111,13 +111,17 @@ chainweb:
   # The defining value of the network. To change this means being on a
   # completely independent Chainweb.
   chainwebVersion: mainnet01
+  allowReadsInLocal: true
+  headerStream: true
+
   # The number of requests allowed per second per client to certain endpoints.
   # If these limits are crossed, you will receive a 429 HTTP error.
   throttling:
     local: 0.1
     mining: 5
-    global: 50
+    global: 1000
     putPeer: 11
+
   mining:
     # Settings for how a Node can provide work for remote miners.
     coordination:
