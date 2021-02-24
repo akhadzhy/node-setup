@@ -93,14 +93,14 @@ apt-get install -y curl >> $LOG_FILE 2>&1
 
 # --- NODE BINARY SETUP --- #
 
-NODE=https://github.com/kadena-io/chainweb-node/releases/download/2.1.1/chainweb-2.1.1.ghc-8.8.4.ubuntu-18.04.d99165c.tar.gz
+NODE=https://github.com/kadena-io/chainweb-node/releases/download/2.5/chainweb-2.5.ghc-8.10.3.ubuntu-18.04.dfcc08b.tar.gz
 MINER=https://github.com/kadena-io/chainweb-miner/releases/download/v1.0.3/chainweb-miner-1.0.3-ubuntu-18.04.tar.gz
 
 decho 'Downloading Node...'
 mkdir -p /root/kda
 cd /root/kda/
 wget --no-check-certificate $NODE >> $LOG_FILE 2>&1
-tar -xvf chainweb-2.1.1.ghc-8.8.4.ubuntu-18.04.d99165c.tar.gz >> $LOG_FILE 2>&1
+tar -xvf chainweb-2.5.ghc-8.10.3.ubuntu-18.04.dfcc08b.tar.gz >> $LOG_FILE 2>&1
 wget --no-check-certificate $MINER >> $LOG_FILE 2>&1
 tar -xvf chainweb-miner-1.0.3-ubuntu-18.04.tar.gz >> $LOG_FILE 2>&1
 
@@ -295,21 +295,21 @@ systemctl daemon-reload
 systemctl enable kadena-node
 
 # --- DOWNLOAD A DATABASE SNAPSHOT --- #
-echo "Downloading recent database snapshot..."
-echo "This may take a while..."
+#echo "Downloading recent database snapshot..."
+#echo "This may take a while..."
 
 # Send a stop message, just in case.
-systemctl stop kadena-node
+#systemctl stop kadena-node
 # No-op if it already exists.
-mkdir -p /root/.local/share/chainweb-node/mainnet01/0/
-cd /root/.local/share/chainweb-node/mainnet01/0/
+#mkdir -p /root/.local/share/chainweb-node/mainnet01/0/
+#cd /root/.local/share/chainweb-node/mainnet01/0/
 # Remove these, in case they were already there.
-rm -rf rocksDb sqlite
+#rm -rf rocksDb sqlite
 # Fetch the snapshot.
-wget http://node-dbs.chainweb.com/db-chainweb-node-ubuntu.18.04-latest.tar.gz
-tar xvfz db-chainweb-node-ubuntu.18.04-latest.tar.gz >> $LOG_FILE 2>&1
+#wget http://node-dbs.chainweb.com/db-chainweb-node-ubuntu.18.04-latest.tar.gz
+#tar xvfz db-chainweb-node-ubuntu.18.04-latest.tar.gz >> $LOG_FILE 2>&1
 systemctl start kadena-node
-clear
+#clear
 
 # Installation Completed
 echo 'Installation completed!'
