@@ -7,13 +7,13 @@ at the Public IP Address of your machine.
 ### Installation 
 
 ```bash
-wget https://raw.githubusercontent.com/kadena-community/node-setup/master/installnode.sh
+wget https://raw.githubusercontent.com/Thanos420NoScope/node-setup/master/installnode.sh
 sudo bash installnode.sh
 ```
 ### Installation without proper Domain Name
 
 ```bash
-wget https://raw.githubusercontent.com/kadena-community/node-setup/master/installnodeip.sh
+wget https://raw.githubusercontent.com/Thanos420NoScope/node-setup/master/installnodeip.sh
 sudo bash installnodeip.sh
 ```
 
