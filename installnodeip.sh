@@ -110,7 +110,7 @@ cat << EOF > /root/kda/config.yaml
 chainweb:
   # The defining value of the network. To change this means being on a
   # completely independent Chainweb.
-  chainwebVersion: mainnet01
+  chainwebVersion: testnet04
   allowReadsInLocal: true
   headerStream: true
 
@@ -157,51 +157,27 @@ chainweb:
     # These will share more peers and block data to your Node.
     peers:
       - address:
-          hostname: us-w1.chainweb.com
+          hostname: us1.testnet.chainweb.com
           port: 443
         id: null
       - address:
-          hostname: us-w2.chainweb.com
+          hostname: us2.testnet.chainweb.com
           port: 443
         id: null
       - address:
-          hostname: us-w3.chainweb.com
+          hostname: eu1.testnet.chainweb.com
           port: 443
         id: null
       - address:
-          hostname: us-e1.chainweb.com
+          hostname: eu2.testnet.chainweb.com
           port: 443
         id: null
       - address:
-          hostname: us-e2.chainweb.com
+          hostname: ap1.testnet.chainweb.com
           port: 443
         id: null
       - address:
-          hostname: us-e3.chainweb.com
-          port: 443
-        id: null
-      - address:
-          hostname: fr1.chainweb.com
-          port: 443
-        id: null
-      - address:
-          hostname: fr2.chainweb.com
-          port: 443
-        id: null
-      - address:
-          hostname: fr3.chainweb.com
-          port: 443
-        id: null
-      - address:
-          hostname: jp1.chainweb.com
-          port: 443
-        id: null
-      - address:
-          hostname: jp2.chainweb.com
-          port: 443
-        id: null
-      - address:
-          hostname: jp3.chainweb.com
+          hostname: ap2.testnet.chainweb.com
           port: 443
         id: null
 logging:
@@ -264,7 +240,7 @@ EOF
 # chmod +x /root/kda/health.sh
 # cat <<EOF > /root/kda/health.sh
 # #!/bin/bash
-# status_code=\$(timeout 5m curl --write-out %{http_code} https://$whereami:443/chainweb/0.0/mainnet01/health-check --silent --output /dev/null)
+# status_code=\$(timeout 5m curl --write-out %{http_code} https://$whereami:443/chainweb/0.0/testnet04/health-check --silent --output /dev/null)
 # echo \$status_code
 # if [[ "\$status_code" -ne 200 ]]; then
 #    echo "No response from API: Restarting the Node"
@@ -292,8 +268,8 @@ systemctl enable kadena-node
 # Send a stop message, just in case.
 #systemctl stop kadena-node
 # No-op if it already exists.
-#mkdir -p /root/.local/share/chainweb-node/mainnet01/0/
-#cd /root/.local/share/chainweb-node/mainnet01/0/
+#mkdir -p /root/.local/share/chainweb-node/testnet04/0/
+#cd /root/.local/share/chainweb-node/testnet04/0/
 # Remove these, in case they were already there.
 #rm -rf rocksDb sqlite
 # Fetch the snapshot.
