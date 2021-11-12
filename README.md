@@ -28,6 +28,6 @@ cd /root/kda
 systemctl stop kadena-node
 rm chainweb-node
 wget https://github.com/kadena-io/chainweb-node/releases/download/2.11/chainweb-2.11.ghc-8.10.7.ubuntu-20.04.65becb6.tar.gz
-tar -xvf hainweb-2.11.ghc-8.10.7.ubuntu-20.04.65becb6.tar.gz
+tar -xvf chainweb-2.11.ghc-8.10.7.ubuntu-20.04.65becb6.tar.gz
 systemctl start kadena-node
 ```
