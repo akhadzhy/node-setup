@@ -4,7 +4,7 @@
 `sudo` privileges, that you've bought a proper Domain Name and are pointing it
 at the Public IP Address of your machine.
 
-### Installation 
+### Installation
 
 ```bash
 wget https://raw.githubusercontent.com/Thanos420NoScope/node-setup/master/installnode.sh
@@ -27,7 +27,7 @@ A log of the install is stored in `/tmp/install.log` if there were any errors.
 cd /root/kda
 systemctl stop kadena-node
 rm chainweb-node
-wget https://github.com/kadena-io/chainweb-node/releases/download/2.11/chainweb-2.11.ghc-8.10.7.ubuntu-20.04.65becb6.tar.gz
-tar -xvf chainweb-2.11.ghc-8.10.7.ubuntu-20.04.65becb6.tar.gz
+wget https://github.com/kadena-io/chainweb-node/releases/download/2.12/chainweb-2.12.ghc-8.10.7.ubuntu-20.04.0aba2d1.tar.gz
+tar -xvf chainweb-2.12.ghc-8.10.7.ubuntu-20.04.0aba2d1.tar.gz
 systemctl start kadena-node
 ```
