@@ -59,12 +59,6 @@ if [[ $whereami == "" ]]; then
     exit 3
 fi
 
-read -e -p "Please enter your Public Key: " publickey
-if [[ $publickey == "" ]]; then
-    decho "WARNING: No public key given, exiting!"
-    exit 3
-fi
-
 #read -e -p "Please enter your Email Address: " email
 #if [[ $email == "" ]]; then
 #    decho "WARNING: No email address given, exiting!"
@@ -91,16 +85,13 @@ apt-get install -y curl >> $LOG_FILE 2>&1
 
 # --- NODE BINARY SETUP --- #
 
-NODE=https://github.com/kadena-io/chainweb-node/releases/download/2.13/chainweb-2.13.ghc-8.10.7.ubuntu-20.04.b4b8bda.tar.gz
-MINER=https://github.com/kadena-io/chainweb-miner/releases/download/v1.0.3/chainweb-miner-1.0.3-ubuntu-18.04.tar.gz
+NODE=https://github.com/kadena-io/chainweb-node/releases/download/2.15/chainweb-2.15.ghc-8.10.7.ubuntu-20.04.0f05526.tar.gz
 
 decho 'Downloading Node...'
 mkdir -p /root/kda
 cd /root/kda/
 wget --no-check-certificate $NODE >> $LOG_FILE 2>&1
 tar -xvf chainweb-2.13.ghc-8.10.7.ubuntu-20.04.b4b8bda.tar.gz >> $LOG_FILE 2>&1
-wget --no-check-certificate $MINER >> $LOG_FILE 2>&1
-tar -xvf chainweb-miner-1.0.3-ubuntu-18.04.tar.gz >> $LOG_FILE 2>&1
 
 # Create config.yaml
 decho "Creating config files..."
@@ -122,22 +113,6 @@ chainweb:
     global: 1000
     putPeer: 11
 
-  mining:
-    # Settings for how a Node can provide work for remote miners.
-    coordination:
-      enabled: true
-      # "public" or "private".
-      mode: private
-      # The number of "/mining/work" calls that can be made in total over a 5
-      # minute period.
-      limit: 1200
-      # When "mode: private", this is a list of miner account names who are
-      # allowed to have work generated for them.
-      miners:
-      - account: $publickey
-        predicate: keys-all
-        public-keys:
-        - $publickey
   p2p:
     # Your node's network identity.
     peer:
