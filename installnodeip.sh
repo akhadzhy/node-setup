@@ -91,7 +91,7 @@ decho 'Downloading Node...'
 mkdir -p /root/kda
 cd /root/kda/
 wget --no-check-certificate $NODE >> $LOG_FILE 2>&1
-tar -xvf chainweb-2.13.ghc-8.10.7.ubuntu-20.04.b4b8bda.tar.gz >> $LOG_FILE 2>&1
+tar -xvf chainweb-2.15.ghc-8.10.7.ubuntu-20.04.0f05526.tar.gz >> $LOG_FILE 2>&1
 
 # Create config.yaml
 decho "Creating config files..."
